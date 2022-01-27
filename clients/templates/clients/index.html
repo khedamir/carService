@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="{% url 'main' %}">Главная</a></li>
+            <li><a href="">Создать заявку</a></li>
+        </ul>
+    </header>
+    
+    <main>
+        <h2>Заявка</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            ФИО{{ form.author }} <br>
+            Телефон{{ form.contacts }} <br>
+            Марка автомобиля{{ form.brandCar }} <br>
+            Дата заявки{{ form.date }} <br>
+            Проблема {{ form.problem }} <br>
+            <button type="submit">Отправить заявку</button>
+        </form>
+        <p>{{ error }}</p>
+    </main>
+</body>
+</html>
