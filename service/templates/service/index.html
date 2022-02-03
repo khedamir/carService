@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="{% url 'main' %}">Главная</a></li>
+            <li><a href="{% url 'logout' %}">Выйти</a></li>
+            <li><a href="{% url 'service' %}">Заявки</a></li>
+        </ul>
+    </header>
+    <main>
+        <form action="" method="GET">
+            <select name="status" id="status">
+                <option value="1">Поступившие заявки</option>
+                <option value="2">В ремонте</option>
+                <option value="3">Выполнено</option>
+            </select>
+            <button type="submit">Показать</button>
+        </form>
+        <h2>Заявки</h2>
+        {% for el in rRequest %}
+            <div style="background-color: #1234; padding:12px; margin: 12px 0">
+                <h3>Отправитель: {{el.author}}</h3>
+                <h4>{{el.brandCar}}</h4>
+                <p>{{ el.problem }}</p>
+                <p>{{el.contacts}}</p>
+                <p>Дата получения: {{el.date}}</p>
+
+                
+                <form action="service/changeStatusMan" method="get">
+                    <input type="hidden" value= {{ el.id }}>
+                    <input type="hidden" value= {{ el.status }}>
+                    <button>{{ el.get_status_display }}</button>
+                </form>
+            </div>
+        {% endfor %}
+    </main>
+</body>
+</html>

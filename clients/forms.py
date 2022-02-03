@@ -6,4 +6,4 @@ from main.models import *
 class RequestForm(ModelForm):
     class Meta:
         model = repairRequest
-        fields = ['author', 'contacts', 'brandCar', 'date', 'problem']
+        fields = ['author', 'contacts', 'brandCar', 'problem']

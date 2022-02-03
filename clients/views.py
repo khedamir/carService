@@ -9,14 +9,16 @@ def index(request):
         form = RequestForm(request.POST)
         if form.is_valid():
             form.save()
+            date = {
+                'form': form
+            }
+            return render(request, 'clients/index.html', date)
         else:
             error = 'Error'
 
-
-
     date = {
         'form': form,
-        'error' : error
+        'error': error
     }
 
     return render(request, 'clients/index.html', date)
