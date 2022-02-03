@@ -23,4 +23,4 @@ def changeStatusMan(request):
     a=request.GET.get('id')
     b=request.GET.get('status')
     repairRequest.objects.filter(id=a).update(status='2')
-    return redirect('main')
+    return redirect('service')
