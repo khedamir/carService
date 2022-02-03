@@ -32,12 +32,12 @@
                 <p>{{el.contacts}}</p>
                 <p>Дата получения: {{el.date}}</p>
 
-                
-                <form action="service/changeStatusMan" method="get">
+                <a href="service/changeStatusMan?id={{el.id}}&status={{el.status}}">{{ el.get_status_display }}</a>
+                <!-- <form action="service/changeStatusMan" method="get">
                     <input type="hidden" name="id" value= {{ el.id }}>
                     <input type="hidden" value= {{ el.status }}>
                     <button>{{ el.get_status_display }}</button>
-                </form>
+                </form> -->
             </div>
         {% endfor %}
     </main>

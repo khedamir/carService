@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 def index(request):
     status_q = request.GET.get("status")
     if not status_q:
-        rRequest = []
+        rRequest = repairRequest.objects.filter(status='1')
     else:
         rRequest = repairRequest.objects.filter(status=status_q)
 
@@ -21,10 +21,16 @@ def index(request):
 
 def changeStatusMan(request):
     a=request.GET.get('id')
-    # raise Exception(a)
     rStatus = request.GET.get('status')
     rRequest = repairRequest.objects.get(id=a)
-    rRequest.status = 2
-    rRequest.save()
+
+    if rStatus == '1':
+        rRequest.status = 2
+        rRequest.save()
+    elif rStatus == '2':
+        rRequest.status = 3
+        rRequest.save()
+    else:
+        rRequest.delete()
     
     return redirect('service')
