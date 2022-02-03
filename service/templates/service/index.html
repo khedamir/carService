@@ -34,7 +34,7 @@
 
                 
                 <form action="service/changeStatusMan" method="get">
-                    <input type="hidden" value= {{ el.id }}>
+                    <input type="hidden" name="id" value= {{ el.id }}>
                     <input type="hidden" value= {{ el.status }}>
                     <button>{{ el.get_status_display }}</button>
                 </form>

@@ -21,6 +21,10 @@ def index(request):
 
 def changeStatusMan(request):
     a=request.GET.get('id')
-    b=request.GET.get('status')
-    repairRequest.objects.filter(id=a).update(status='2')
+    # raise Exception(a)
+    rStatus = request.GET.get('status')
+    rRequest = repairRequest.objects.get(id=a)
+    rRequest.status = 2
+    rRequest.save()
+    
     return redirect('service')
